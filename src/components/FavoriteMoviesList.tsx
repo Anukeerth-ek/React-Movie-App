@@ -1,25 +1,47 @@
-// FavoriteMoviesList.tsx
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../types/types';
+import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../types/types";
 
 const FavoriteMoviesList: React.FC = () => {
-  const favoriteMovies = useSelector((state: RootState) => state.movies.favoriteMovies);
+     const favoriteMovies = useSelector((state: RootState) => state.movies.favoriteMovies);
 
-  return (
-    <div>
-      <h2>Favourite Movies</h2>
-      <div className="grid grid-cols-3 gap-4">
-        {favoriteMovies.map((movie) => (
-          <div key={movie.id} className="flex flex-col items-center">
-            <img src={movie.image} alt={movie.movie} className="w-full h-[190px] object-fill hover:bg-black-60" />
-            <h3 className="text-lg">{movie.movie}</h3>
-            <p>Rating: <span>{movie.rating}</span></p>
+     // Sort favoriteMovies array based on the timestamp property
+     const sortedFavoriteMovies = favoriteMovies.slice().sort((a, b) => {
+          const timestampA = a.timestamp !== undefined ? a.timestamp : Number.MIN_SAFE_INTEGER;
+          const timestampB = b.timestamp !== undefined ? b.timestamp : Number.MIN_SAFE_INTEGER;
+          return timestampB - timestampA;
+     });
+
+     return (
+          <div className="px-10 pt-4">
+               {sortedFavoriteMovies.length === 0 ? (
+                    <div className="text-gray-500">
+                         No favorite movies added yet. Add some movies to your favorites list!
+                    </div>
+               ) : (
+                    <>
+                         <h2 className="text-2xl">Favourite Movies</h2>
+                         <div className=" flex flex-row ">
+                              {sortedFavoriteMovies.map((movie) => (
+                                   <div
+                                        key={movie.id}
+                                        className="flex flex-col items-center w-[280px]  border   cursor-pointer mt-3 mr-3 p-2 bg-[#131c31]"
+                                   >
+                                        <img src={movie.image} className="w-full h-[190px] object-fill hover:bg-black-60" />
+                                        <div className="flex justify-between items-center ">
+                                             <h3 className="text-lg mr-4 text-white">{movie.movie}</h3>
+
+                                             <p className="text-white">
+                                                  Rating: <span className="text-[#7eadfc]">{movie.rating}</span>
+                                             </p>
+                                        </div>
+                                   </div>
+                              ))}
+                         </div>
+                    </>
+               )}
           </div>
-        ))}
-      </div>
-    </div>
-  );
+     );
 };
 
 export default FavoriteMoviesList;

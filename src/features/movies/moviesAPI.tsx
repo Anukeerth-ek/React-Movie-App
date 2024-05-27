@@ -1,4 +1,4 @@
-// api.ts
+
 import axios from 'axios';
 
 const apiUrl = 'https://dummyapi.online/api/movies';

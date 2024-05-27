@@ -1,11 +1,16 @@
-// moviesSlice.ts
+
+
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { Movie } from '../../types/types';
-import { fetchMoviesFromAPI } from './moviesAPI'; // Update this path if necessary
+import { fetchMoviesFromAPI } from './moviesAPI';
+
+interface FavoriteMovie extends Movie {
+  timestamp: number;
+}
 
 export interface MoviesState {
   movies: Movie[];
-  favoriteMovies: Movie[];
+  favoriteMovies: FavoriteMovie[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
 }
@@ -28,8 +33,10 @@ const moviesSlice = createSlice({
   reducers: {
     addFavoriteMovie: (state, action) => {
       const movie = state.movies.find(movie => movie.id === action.payload);
-      if (movie && !state.favoriteMovies.includes(movie)) {
-        state.favoriteMovies.push(movie);
+      if (movie && !state.favoriteMovies.some(favMovie => favMovie.id === movie.id)) {
+        // Add timestamp property to the movie before adding to favorites
+        const movieWithTimestamp = { ...movie, timestamp: Date.now() };
+        state.favoriteMovies.push(movieWithTimestamp);
       }
     },
     removeFavoriteMovie: (state, action) => {

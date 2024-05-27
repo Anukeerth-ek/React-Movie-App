@@ -24,7 +24,7 @@ const MoviesList: React.FC = () => {
   }
 
   return (
-    <div className='px-[10px] md:px-[175px] py-5 w-[100%] '>
+    <div className='px-[50px] md:px-[90px] lg:px-[175px] py-5 w-[100%] '>
       <div className='flex justify-between'>
         <h2 className='text-2xl font-semibold'>All Movies</h2>
         <IoMdArrowDropdownCircle className='text-2xl hover:translate-y-2 duration-300'/>

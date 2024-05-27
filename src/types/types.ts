@@ -1,10 +1,11 @@
-// types.ts
+
 export interface Movie {
   id: string | number;
   movie: string;
   rating: number;
   image: string;
   imdb_url: string;
+  timestamp?: number; 
 }
 
 export interface RootState {
