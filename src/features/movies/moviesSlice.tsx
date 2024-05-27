@@ -1,17 +1,11 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { fetchMoviesFromAPI } from './moviesAPI';
+// moviesSlice.ts
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { Movie } from '../../types/types';
+import { fetchMoviesFromAPI } from './moviesAPI'; // Update this path if necessary
 
-interface Movie {
-  id: string | number;
-  movie: string;
-  image: string;
-  rating: number;
-  imdb_url: string;
-}
-
-interface MoviesState {
+export interface MoviesState {
   movies: Movie[];
-  favoriteMovies: Movie[]; // Store entire movie objects
+  favoriteMovies: Movie[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
 }
@@ -23,37 +17,41 @@ const initialState: MoviesState = {
   error: null,
 };
 
-// Define async thunk for fetching movies
 export const fetchMovies = createAsyncThunk('movies/fetchMovies', async () => {
-  const data = await fetchMoviesFromAPI();
-  return data;
+  const response = await fetchMoviesFromAPI();
+  return response;
 });
 
 const moviesSlice = createSlice({
   name: 'movies',
   initialState,
   reducers: {
-    addFavoriteMovie: (state, action: PayloadAction<Movie>) => {
-      state.favoriteMovies.push(action.payload); // Push entire movie object
+    addFavoriteMovie: (state, action) => {
+      const movie = state.movies.find(movie => movie.id === action.payload);
+      if (movie && !state.favoriteMovies.includes(movie)) {
+        state.favoriteMovies.push(movie);
+      }
     },
-    removeFavoriteMovie: (state, action: PayloadAction<Movie>) => {
-      state.favoriteMovies = state.favoriteMovies.filter(movie => movie.id !== action.payload.id); // Remove by ID
-    }
+    removeFavoriteMovie: (state, action) => {
+      state.favoriteMovies = state.favoriteMovies.filter(movie => movie.id !== action.payload);
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchMovies.pending, (state) => {
         state.status = 'loading';
+        state.error = null;
       })
-      .addCase(fetchMovies.fulfilled, (state, action: PayloadAction<Movie[]>) => {
+      .addCase(fetchMovies.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.movies = action.payload.sort((a, b) => b.rating - a.rating);
+        state.movies = action.payload;
+        state.error = null;
       })
       .addCase(fetchMovies.rejected, (state, action) => {
         state.status = 'failed';
-        state.error = action.error.message || null;
+        state.error = action.error.message || 'Failed to fetch movies';
       });
-  }
+  },
 });
 
 export const { addFavoriteMovie, removeFavoriteMovie } = moviesSlice.actions;

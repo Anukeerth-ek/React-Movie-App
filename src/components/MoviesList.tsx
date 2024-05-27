@@ -1,4 +1,3 @@
-// MoviesList.tsx
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { fetchMovies } from '../features/movies/moviesSlice';
@@ -21,16 +20,16 @@ const MoviesList: React.FC = () => {
   }
 
   if (status === 'failed') {
-    return <div>{error}</div>;
+    return <div>Error: {error}</div>;
   }
 
   return (
     <div className='px-[10px] md:px-[175px] py-5 w-[100%] '>
-        <div className='flex justify-between'>
-      <h2 className='text-2xl font-semibold'>All Movies</h2>
+      <div className='flex justify-between'>
+        <h2 className='text-2xl font-semibold'>All Movies</h2>
         <IoMdArrowDropdownCircle className='text-2xl hover:translate-y-2 duration-300'/>
-        </div>
-      <div className='flex flex-wrap '>
+      </div>
+      <div className='flex flex-wrap'>
         {movies.map((movieItem) => (
           <MovieCard key={movieItem.id} movieItem={movieItem} />
         ))}

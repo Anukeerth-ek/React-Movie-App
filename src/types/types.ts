@@ -1,6 +1,4 @@
 // types.ts
-
-// Define the Movie interface
 export interface Movie {
   id: string | number;
   movie: string;
@@ -9,14 +7,13 @@ export interface Movie {
   imdb_url: string;
 }
 
-// Define the RootState interface representing the overall state of the Redux store
 export interface RootState {
   movies: MoviesState;
-  // Add other slices of the store if needed
 }
 
-// Define the shape of the movies slice of the Redux store
 export interface MoviesState {
+  movies: Movie[];
   favoriteMovies: Movie[];
-  // Add other movie-related properties if needed
+  status: 'idle' | 'loading' | 'succeeded' | 'failed';
+  error: string | null;
 }
