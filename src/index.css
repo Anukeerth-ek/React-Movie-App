@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Add this to your CSS file */
+.relative:hover button {
+    opacity: 1;
+  }
+  
