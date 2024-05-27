@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addFavoriteMovie, removeFavoriteMovie } from '../features/movies/moviesSlice';
 import { Movie } from '../types/types';
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
-import firstImage from '../assets/images/dark_knight.jpg';
 import { RootState } from '../types/types';
 
 interface MovieCardProps {
