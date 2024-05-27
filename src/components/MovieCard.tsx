@@ -56,7 +56,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movieItem }) => {
         >
           {isFavorite ? <MdFavorite/> : <MdFavoriteBorder/>}
         </button>
-        <img src={firstImage} alt={movieItem.movie} className='w-full h-[190px] object-fill hover:bg-black-60' />
+        <img src={movieItem.image} alt={movieItem.movie} className='w-full h-[190px] object-fill hover:bg-black-60' />
       </div>
       <div className='px-[10px] md:px-[13px] mt-[8px]'>
         <div className='flex justify-between'>

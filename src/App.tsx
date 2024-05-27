@@ -2,9 +2,8 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MoviesList from "./components/MoviesList";
 import Navbar from "./components/Navbar";
-
-const FavoriteMoviesList = lazy(() => import("./components/FavoriteMoviesList"));
 import  { lazy, Suspense } from "react";
+const FavoriteMoviesList = lazy(() => import("./components/FavoriteMoviesList"));
 function App() {
      return (
           <Router>
