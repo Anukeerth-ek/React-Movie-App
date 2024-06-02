@@ -1,10 +1,14 @@
 
 export interface Movie {
-  id: string | number;
-  movie: string;
-  rating: number;
-  image: string;
+  
+  title: string;
+  year: number;
+  cast: string[]
+  thumbnail: string;
   imdb_url: string;
+  genres:string[];
+  href:string;
+  extract: string;
   timestamp?: number; 
 }
 

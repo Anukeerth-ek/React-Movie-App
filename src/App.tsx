@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MoviesList from "./components/MoviesList";
 import Navbar from "./components/Navbar";
 import  { lazy, Suspense } from "react";
-const FavoriteMoviesList = lazy(() => import("./components/FavoriteMoviesList"));
+const FavoriteMoviesList = lazy(() => import("./pages/FavoriteMoviesList"));
 function App() {
      return (
           <Router>

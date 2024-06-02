@@ -4,12 +4,18 @@ import { addFavoriteMovie, removeFavoriteMovie } from '../features/movies/movies
 import { Movie } from '../types/types';
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { RootState } from '../types/types';
+import { useNavigate } from 'react-router-dom';
 
 interface MovieCardProps {
   movieItem: Movie;
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ movieItem }) => {
+
+
+  const navigate = useNavigate()
+
+  console.log("item", movieItem)
   const dispatch = useDispatch();
 
   // Check if the movie is already in the favorites
@@ -47,7 +53,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movieItem }) => {
   }, []);
 
   return (
-    <div className="border w-[280px] cursor-pointer mt-3 mr-3 p-2 relative bg-[#131c31]" onClick={() => window.location.href = movieItem.imdb_url}>
+    <div className="border w-[280px] cursor-pointer mt-3 mr-3 p-2 relative bg-[#131c31]" onClick={() => navigate('/movieDetail')}>
       <div className='w-[260px] relative hover:opacity-50'>
         <button
           className={`absolute text-red-600 text-2xl right-1 top-1 p-1 transition-opacity duration-300 rounded-lg bg-gray-200 hover:text-red-600 ${isFavorite ? 'opacity-100' : 'opacity-0'}`}
@@ -55,12 +61,12 @@ const MovieCard: React.FC<MovieCardProps> = ({ movieItem }) => {
         >
           {isFavorite ? <MdFavorite/> : <MdFavoriteBorder/>}
         </button>
-        <img src={movieItem.image} alt={movieItem.movie} className='w-full h-[190px] object-fill hover:bg-black-60' />
+        <img src={movieItem.thumbnail}  className='w-full h-[190px] object-fill hover:bg-black-60' />
       </div>
       <div className='px-[10px] md:px-[13px] mt-[8px]'>
         <div className='flex justify-between'>
-          <h2 className=' text-lg text-white'>{movieItem.movie.length > 18 ? `${movieItem.movie.slice(0, 18)}...` : movieItem.movie}</h2>
-          <p className='text-white'>Rating: <span className='text-[#7eadfc]'>{movieItem.rating}</span></p>
+          <h2 className=' text-lg text-white'>{movieItem.title.length > 18 ? `${movieItem.title.slice(0, 18)}...` : movieItem.title}</h2>
+          {/* <p className='text-white'>Rating: <span className='text-[#7eadfc]'>{movieItem.rating}</span></p> */}
         </div>
       </div>
     </div>

@@ -21,18 +21,18 @@ const FavoriteMoviesList: React.FC = () => {
                ) : (
                     <>
                          <h2 className="text-2xl">Favourite Movies</h2>
-                         <div className=" flex flex-row ">
-                              {sortedFavoriteMovies.map((movie) => (
+                         <div className=" flex flex-col md:flex-row ">
+                              {sortedFavoriteMovies.map((movie, index) => (
                                    <div
-                                        key={movie.id}
+                                        key={index}
                                         className="flex flex-col items-center w-[280px]  border   cursor-pointer mt-3 mr-3 p-2 bg-[#131c31]"
                                    >
-                                        <img src={movie.image} className="w-full h-[190px] object-fill hover:bg-black-60" />
+                                        <img src={movie.thumbnail} className="w-full h-[190px] object-fill hover:bg-black-60" />
                                         <div className="flex justify-between items-center ">
-                                             <h3 className="text-lg mr-4 text-white">{movie.movie}</h3>
+                                             <h3 className="text-lg mr-4 text-white">{movie.title}</h3>
 
                                              <p className="text-white">
-                                                  Rating: <span className="text-[#7eadfc]">{movie.rating}</span>
+                                                  {/* Rating: <span className="text-[#7eadfc]">{movie.rating}</span> */}
                                              </p>
                                         </div>
                                    </div>
