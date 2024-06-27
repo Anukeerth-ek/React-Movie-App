@@ -27,40 +27,40 @@ export const fetchMovies = createAsyncThunk('movies/fetchMovies', async () => {
   return response;
 });
 
-const moviesSlice = createSlice({
-  name: 'movies',
-  initialState,
-  reducers: {
-    addFavoriteMovie: (state, action) => {
-      const movie = state.movies.find(movie => movie.id === action.payload);
-      if (movie && !state.favoriteMovies.some(favMovie => favMovie.id === movie.id)) {
-        // Add timestamp property to the movie before adding to favorites
-        const movieWithTimestamp = { ...movie, timestamp: Date.now() };
-        state.favoriteMovies.push(movieWithTimestamp);
-      }
-    },
-    removeFavoriteMovie: (state, action) => {
-      state.favoriteMovies = state.favoriteMovies.filter(movie => movie.id !== action.payload);
-    },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchMovies.pending, (state) => {
-        state.status = 'loading';
-        state.error = null;
-      })
-      .addCase(fetchMovies.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.movies = action.payload;
-        state.error = null;
-      })
-      .addCase(fetchMovies.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message || 'Failed to fetch movies';
-      });
-  },
-});
+// const moviesSlice = createSlice({
+//   name: 'movies',
+//   initialState,
+//   reducers: {
+//     addFavoriteMovie: (state, action) => {
+//       const movie = state.movies.find(movie => movie.id === action.payload);
+//       if (movie && !state.favoriteMovies.some(favMovie => favMovie.id === movie.id)) {
+//         // Add timestamp property to the movie before adding to favorites
+//         const movieWithTimestamp = { ...movie, timestamp: Date.now() };
+//         state.favoriteMovies.push(movieWithTimestamp);
+//       }
+//     },
+//     removeFavoriteMovie: (state, action) => {
+//       state.favoriteMovies = state.favoriteMovies.filter(movie => movie.id !== action.payload);
+//     },
+//   },
+//   extraReducers: (builder) => {
+//     builder
+//       .addCase(fetchMovies.pending, (state) => {
+//         state.status = 'loading';
+//         state.error = null;
+//       })
+//       .addCase(fetchMovies.fulfilled, (state, action) => {
+//         state.status = 'succeeded';
+//         state.movies = action.payload;
+//         state.error = null;
+//       })
+//       .addCase(fetchMovies.rejected, (state, action) => {
+//         state.status = 'failed';
+//         state.error = action.error.message || 'Failed to fetch movies';
+//       });
+//   },
+// });
 
-export const { addFavoriteMovie, removeFavoriteMovie } = moviesSlice.actions;
+// export const { addFavoriteMovie, removeFavoriteMovie } = moviesSlice.actions;
 
-export default moviesSlice.reducer;
+// export default moviesSlice.reducer;

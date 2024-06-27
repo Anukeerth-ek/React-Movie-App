@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MoviesList from "./components/MoviesList";
 import Navbar from "./components/Navbar";
 import  { lazy, Suspense } from "react";
+import MovieDetails from "./pages/MovieDetails";
 const FavoriteMoviesList = lazy(() => import("./pages/FavoriteMoviesList"));
 function App() {
      return (
@@ -20,6 +21,7 @@ function App() {
                                         </Suspense>
                                    }
                               />
+                              <Route path="/movieDetail" element={<MovieDetails/>}/>
                          </Routes>
                     </div>
                </div>

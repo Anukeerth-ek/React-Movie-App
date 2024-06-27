@@ -1,7 +1,7 @@
 
 const MovieDetails = () => {
   return (
-    <div>MovieDetails</div>
+    <div className="text-black">MovieDetails</div>
   )
 }
 

@@ -24,14 +24,14 @@ const MoviesList: React.FC = () => {
   }
 
   return (
-    <div className='px-[50px] md:px-[90px] lg:px-[175px] py-5 w-[100%] '>
-      <div className='flex justify-between'>
+    <div className='px-[16px] md:px-[90px] lg:px-[175px] py-5 w-[100%] '>
+      <div className='flex justify-between mx-5 md:mx-0'>
         <h2 className='text-2xl font-semibold'>All Movies</h2>
         <IoMdArrowDropdownCircle className='text-2xl hover:translate-y-2 duration-300'/>
       </div>
-      <div className='flex flex-wrap'>
+      <div className='flex items-center justify-center flex-wrap'>
         {movies.map((movieItem) => (
-          <MovieCard key={movieItem.id} movieItem={movieItem} />
+          <MovieCard  movieItem={movieItem} />
         ))}
       </div>
     </div>
