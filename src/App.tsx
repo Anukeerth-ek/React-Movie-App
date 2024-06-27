@@ -4,10 +4,13 @@ import MoviesList from "./components/MoviesList";
 import Navbar from "./components/Navbar";
 import  { lazy, Suspense } from "react";
 import MovieDetails from "./pages/MovieDetails";
+import { Provider } from "react-redux";
+import store from "./app/store";
 const FavoriteMoviesList = lazy(() => import("./pages/FavoriteMoviesList"));
 function App() {
      return (
           <Router>
+               <Provider store={store}>
                <div>
                     <Navbar />
                     <div className="bg-white">
@@ -25,6 +28,7 @@ function App() {
                          </Routes>
                     </div>
                </div>
+               </Provider>
           </Router>
      );
 }
