@@ -41,7 +41,7 @@ const Navbar = () => {
           />
           <CiSearch />
         </div>
-        <div className="md:hidden">
+        <div className="lg:hidden">
           {isMenuOpen ? (
             <RxCross1 className="text-3xl cursor-pointer" onClick={toggleMenu} />
           ) : (
@@ -49,20 +49,20 @@ const Navbar = () => {
           )}
         </div>
         <ul
-          className={`bg-white z-50 md:hidden gap-12 text-lg block space-y-4 px-5 py-6 mt-24 ${
+          className={`bg-white z-50 lg:hidden gap-12 text-lg block space-y-4 px-5 py-6 mt-24 ${
             isMenuOpen ? "fixed -top-8 left-0 w-full transition-all ease-out duration-150" : "hidden"
           }`}
         >
           {navItems.map(({ path, link, showDownArrow }) => (
             <li key={link} className="">
-              <NavLink onClick={toggleMenu} to={path} onMouseOver={()=> handleCategoryMovie()}>
+              <NavLink onClick={toggleMenu} to={path} >
                 {link}
                 {showDownArrow && <TiArrowSortedDown />}
               </NavLink>
             </li>
           ))}
         </ul>
-        <ul className="hidden md:flex text-[17px] cursor-pointer">
+        <ul className="hidden lg:flex text-[17px] cursor-pointer">
           {navItems.map((item, index) => (
             <Link to={item.path} key={index}>
               <li className="mr-6 inline-flex items-center">

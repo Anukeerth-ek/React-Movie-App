@@ -4,10 +4,11 @@ import { fetchMovies } from '../features/movies/moviesSlice';
 import MovieCard from './MovieCard';
 import { IoMdArrowDropdownCircle } from "react-icons/io";
 import { RootState } from '../types/types';
+import {AppDispatch } from '../features/store';
 
 const MoviesList: React.FC = () => {
-  const dispatch = useDispatch();
-  const { movies, status, error, searchInput } = useSelector((state: RootState) => state.movies);
+  const dispatch = useDispatch<AppDispatch>();
+  const { movies, status, error, searchInput} = useSelector((state: RootState) => state.movies);
 
   useEffect(() => {
     if (status === 'idle') {

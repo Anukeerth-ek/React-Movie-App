@@ -15,8 +15,8 @@ const FavoriteMoviesList: React.FC = () => {
      return (
           <div className="px-10 pt-4">
                {sortedFavoriteMovies.length === 0 ? (
-                    <div className="text-gray-500">
-                         No favorite movies added yet. Add some movies to your favorites list!
+                    <div className="text-gray-500 text-lg md:text-3xl text-center">
+                         <span className="text-red-400">No favorite movies</span> added yet. Add some movies to your favorites list!
                     </div>
                ) : (
                     <>

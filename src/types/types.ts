@@ -21,4 +21,5 @@ export interface MoviesState {
   favoriteMovies: Movie[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
+  searchInput:any
 }
