@@ -1,19 +1,19 @@
-import React from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavoriteMovie, removeFavoriteMovie } from '../features/movies/moviesSlice';
 import { Movie } from '../types/types';
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { RootState } from '../types/types';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
-interface MovieCardProps {
-  movieItem: Movie;
-}
+// interface MovieCardProps {
+//   movieItem: Movie;
+// }
 
 const AllMovies = () => {
   const { movies, searchInput } = useSelector((state: RootState) => state.movies);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const filteredMovies = movies.filter(movie =>
     movie.title.toLowerCase().includes(searchInput.toLowerCase())

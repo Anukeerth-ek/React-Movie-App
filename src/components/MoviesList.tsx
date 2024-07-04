@@ -9,7 +9,7 @@ import {AppDispatch } from '../features/store';
 
 const MoviesList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { movies, status, error, searchInput} = useSelector((state: RootState) => state.movies);
+  const { movies, status, error} = useSelector((state: RootState) => state.movies);
 
   useEffect(() => {
     if (status === 'idle') {

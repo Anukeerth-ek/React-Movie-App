@@ -19,7 +19,7 @@ const initialState: MoviesState = {
   favoriteMovies: [],
   status: 'idle',
   error: null,
-  searchInput: '',
+  searchInput: ''
 };
 
 const apiUrl = '../movieBackend/api/movieApi.json';
@@ -39,7 +39,8 @@ const moviesSlice = createSlice({
   initialState,
   reducers: {
     setSearchInput: (state, action) => {
-      state.searchInput = action.payload.trim().toLowerCase();
+      console.log(state.searchInput)
+      state.searchInput = action.payload;
     },
     addFavoriteMovie: (state, action) => {
       const movie = state.movies.find(movie => movie.id === action.payload);
