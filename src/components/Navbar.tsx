@@ -32,6 +32,7 @@ const Navbar = () => {
         <Link to="/">
           <h2 className="text-[18px] md:text-[30px]">MovieHub</h2>
         </Link>
+        <Link to="/movies">
         <div className="w-[150px] md:w-[300px] inline-flex items-center">
           <input
             className="w-[100%] py-[6px] px-[10px] rounded-2xl text-sm md:text-base"
@@ -40,7 +41,7 @@ const Navbar = () => {
             value={searchInput}
           />
           <CiSearch />
-        </div>
+        </div></Link>
         <div className="lg:hidden">
           {isMenuOpen ? (
             <RxCross1 className="text-3xl cursor-pointer" onClick={toggleMenu} />

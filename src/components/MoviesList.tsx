@@ -6,6 +6,7 @@ import { IoMdArrowDropdownCircle } from "react-icons/io";
 import { RootState } from '../types/types';
 import {AppDispatch } from '../features/store';
 
+
 const MoviesList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { movies, status, error, searchInput} = useSelector((state: RootState) => state.movies);
@@ -35,8 +36,11 @@ const MoviesList: React.FC = () => {
         <IoMdArrowDropdownCircle className='text-2xl hover:translate-y-2 duration-300' />
       </div>
       <div className='flex items-center justify-center flex-wrap'>
-        {filteredMovies.map((movieItem, index) => (
+        {filteredMovies.slice(0, 20).map((movieItem, index) => (
+          <>
           <MovieCard key={index} movieItem={movieItem} />
+         
+          </>
         ))}
       </div>
     </div>

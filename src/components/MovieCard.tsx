@@ -11,7 +11,7 @@ interface MovieCardProps {
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ movieItem }) => {
-  console.log(movieItem)
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

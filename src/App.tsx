@@ -6,6 +6,7 @@ import  { lazy, Suspense } from "react";
 import MovieDetails from "./pages/MovieDetails";
 import { Provider } from "react-redux";
 import store from "./app/store";
+import AllMovies from "./pages/AllMovies";
 const FavoriteMoviesList = lazy(() => import("./pages/FavoriteMoviesList"));
 function App() {
      return (
@@ -25,6 +26,7 @@ function App() {
                                    }
                               />
                               <Route path="/movieDetail" element={<MovieDetails/>}/>
+                              <Route path="/shop" element={<AllMovies />}/>
                          </Routes>
                     </div>
                </div>

@@ -39,6 +39,7 @@ const moviesSlice = createSlice({
   initialState,
   reducers: {
     setSearchInput: (state, action) => {
+      console.log(state.searchInput)
       state.searchInput = action.payload;
     },
     addFavoriteMovie: (state, action) => {
