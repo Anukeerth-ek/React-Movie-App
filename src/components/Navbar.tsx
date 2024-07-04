@@ -32,7 +32,7 @@ const Navbar = () => {
         <Link to="/">
           <h2 className="text-[18px] md:text-[30px]">MovieHub</h2>
         </Link>
-        <Link to="/movies">
+        <Link to="/search-movies">
         <div className="w-[150px] md:w-[300px] inline-flex items-center">
           <input
             className="w-[100%] py-[6px] px-[10px] rounded-2xl text-sm md:text-base"

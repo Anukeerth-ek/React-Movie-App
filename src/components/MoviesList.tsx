@@ -25,9 +25,10 @@ const MoviesList: React.FC = () => {
     return <div>Error: {error}</div>;
   }
 
-  const filteredMovies = movies.filter(movie =>
-    movie.title.toLowerCase().includes(searchInput.toLowerCase())
-  );
+  // const filteredMovies = movies.filter(movie =>
+  //   movie.title.toLowerCase().includes(searchInput.toLowerCase())
+  // );
+
 
   return (
     <div className='px-[16px] md:px-[90px] lg:px-[175px] py-5 w-[100%] '>
@@ -36,7 +37,7 @@ const MoviesList: React.FC = () => {
         <IoMdArrowDropdownCircle className='text-2xl hover:translate-y-2 duration-300' />
       </div>
       <div className='flex items-center justify-center flex-wrap'>
-        {filteredMovies.slice(0, 20).map((movieItem, index) => (
+        {movies.slice(0, 24).map((movieItem, index) => (
           <>
           <MovieCard key={index} movieItem={movieItem} />
          

@@ -26,7 +26,7 @@ function App() {
                                    }
                               />
                               <Route path="/movieDetail" element={<MovieDetails/>}/>
-                              <Route path="/shop" element={<AllMovies />}/>
+                              <Route path="/search-movies" element={<AllMovies />}/>
                          </Routes>
                     </div>
                </div>
